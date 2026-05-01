@@ -1,0 +1,77 @@
+{
+  "schema_version": "diagnosis_packet.v0.3",
+  "created_at_utc": "2026-04-30T08:12:25.878953+00:00",
+  "company": {
+    "company_id": "C003",
+    "company_name": "MockCompany_003",
+    "sector": "Retail",
+    "as_of_quarter": "2024Q3"
+  },
+  "scores": {
+    "growth_possibility_score": 19.65,
+    "risk_signal_score": 7.33,
+    "financial_health_score": 99.91
+  },
+  "traffic_lights": {
+    "growth": "red",
+    "financial_health": "green",
+    "risk": "green"
+  },
+  "recommended_action": "neutral_review",
+  "evidence": {
+    "positive_factors": [
+      "최근 분기 매출 성장률이 양호합니다.",
+      "영업이익률이 안정적인 수준입니다.",
+      "영업현금흐름률이 긍정적입니다.",
+      "유동비율이 비교적 안정적입니다."
+    ],
+    "risk_factors": [
+      "즉각적인 강한 위험 신호는 제한적으로 관측됩니다."
+    ],
+    "top_growth_model_features": [
+      {
+        "feature": "revenue_growth_qoq",
+        "importance": 0.066492
+      },
+      {
+        "feature": "op_income_growth_qoq",
+        "importance": 0.055071
+      },
+      {
+        "feature": "quality_of_growth",
+        "importance": 0.033604
+      },
+      {
+        "feature": "operating_margin",
+        "importance": 0.031196
+      },
+      {
+        "feature": "stock_return_3m",
+        "importance": 0.029273
+      }
+    ],
+    "top_risk_model_features": [
+      {
+        "feature": "profitability_leverage_pressure",
+        "importance": 0.067843
+      },
+      {
+        "feature": "debt_ratio",
+        "importance": 0.059273
+      },
+      {
+        "feature": "risk_composite_proxy",
+        "importance": 0.051057
+      },
+      {
+        "feature": "stock_return_3m_rolling4_mean",
+        "importance": 0.050842
+      },
+      {
+        "feature": "debt_ratio_rolling4_mean",
+        "importance": 0.039421
+      }
+    ]
+  },
+  "disclaimer": "Synthetic-data MVP output. Not investment advice."
+}

@@ -1,0 +1,48 @@
+{
+  "company_id": "C003",
+  "quarter": "2024Q3",
+  "baseline_scores": {
+    "growth_possibility_score": 19.58,
+    "risk_signal_score": 10.01,
+    "financial_health_score": 98.33
+  },
+  "scenarios": {
+    "interest_rate_up": {
+      "scores": {
+        "growth_possibility_score": 16.91,
+        "risk_signal_score": 11.35,
+        "financial_health_score": 98.2
+      },
+      "delta_vs_baseline": {
+        "growth_possibility_score": -2.67,
+        "risk_signal_score": 1.34,
+        "financial_health_score": -0.13
+      }
+    },
+    "revenue_slowdown": {
+      "scores": {
+        "growth_possibility_score": 31.34,
+        "risk_signal_score": 12.01,
+        "financial_health_score": 97.99
+      },
+      "delta_vs_baseline": {
+        "growth_possibility_score": 11.76,
+        "risk_signal_score": 2.0,
+        "financial_health_score": -0.34
+      }
+    },
+    "market_volatility_up": {
+      "scores": {
+        "growth_possibility_score": 18.95,
+        "risk_signal_score": 13.33,
+        "financial_health_score": 98.33
+      },
+      "delta_vs_baseline": {
+        "growth_possibility_score": -0.63,
+        "risk_signal_score": 3.32,
+        "financial_health_score": 0.0
+      }
+    }
+  },
+  "disclaimer": "Synthetic-data stress test for system demonstration only."
+}

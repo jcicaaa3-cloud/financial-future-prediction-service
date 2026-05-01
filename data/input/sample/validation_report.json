@@ -1,0 +1,33 @@
+{
+  "input_dir": "/mnt/data/financial-future-prediction-service/data/input/sample",
+  "ok": true,
+  "files": {
+    "company_master.csv": {
+      "exists": true,
+      "rows": 40,
+      "missing_columns": []
+    },
+    "financial_statement_quarterly.csv": {
+      "exists": true,
+      "rows": 640,
+      "missing_columns": []
+    },
+    "market_quarterly.csv": {
+      "exists": true,
+      "rows": 640,
+      "missing_columns": []
+    },
+    "macro_quarterly.csv": {
+      "exists": true,
+      "rows": 16,
+      "missing_columns": []
+    },
+    "disclosure_features_quarterly.csv": {
+      "exists": true,
+      "rows": 640,
+      "missing_columns": []
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

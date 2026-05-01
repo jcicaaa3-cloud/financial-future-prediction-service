@@ -1,0 +1,12 @@
+models:
+  baseline:
+    type: random_forest
+    n_estimators: 300
+    random_state: 42
+outputs:
+  growth_score: probability of future growth improvement
+  risk_score: probability of future risk signal
+  financial_health_score: 0-100 regression-style financial health index
+interpretability:
+  method: feature_importance_and_rule_based_reasoning
+  future_extension: SHAP

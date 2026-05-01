@@ -1,0 +1,99 @@
+{
+  "company_id": "C003",
+  "company_name": "MockCompany_003",
+  "sector": "Retail",
+  "quarter": "2024Q3",
+  "scores": {
+    "growth_possibility_score": 19.58,
+    "risk_signal_score": 10.01,
+    "financial_health_score": 98.33
+  },
+  "positive_factors": [
+    "최근 분기 매출 성장률이 양호합니다.",
+    "영업이익률이 안정적인 수준입니다.",
+    "영업현금흐름률이 긍정적입니다.",
+    "유동비율이 비교적 안정적입니다."
+  ],
+  "risk_factors": [
+    "즉각적인 강한 위험 신호는 제한적으로 관측됩니다."
+  ],
+  "top_growth_model_features": [
+    {
+      "feature": "revenue_growth_qoq",
+      "importance": 0.062513
+    },
+    {
+      "feature": "op_income_growth_qoq",
+      "importance": 0.0507
+    },
+    {
+      "feature": "operating_margin",
+      "importance": 0.033479
+    },
+    {
+      "feature": "stock_return_3m",
+      "importance": 0.031424
+    },
+    {
+      "feature": "quality_of_growth",
+      "importance": 0.030987
+    },
+    {
+      "feature": "market_cap_growth_qoq",
+      "importance": 0.028017
+    },
+    {
+      "feature": "current_assets",
+      "importance": 0.026899
+    },
+    {
+      "feature": "current_ratio",
+      "importance": 0.026727
+    }
+  ],
+  "top_risk_model_features": [
+    {
+      "feature": "profitability_leverage_pressure",
+      "importance": 0.070491
+    },
+    {
+      "feature": "debt_ratio",
+      "importance": 0.053503
+    },
+    {
+      "feature": "stock_return_3m_rolling4_mean",
+      "importance": 0.052728
+    },
+    {
+      "feature": "risk_composite_proxy",
+      "importance": 0.050345
+    },
+    {
+      "feature": "debt_ratio_rolling4_mean",
+      "importance": 0.041022
+    },
+    {
+      "feature": "total_equity",
+      "importance": 0.033435
+    },
+    {
+      "feature": "interest_coverage",
+      "importance": 0.030385
+    },
+    {
+      "feature": "operating_cash_flow",
+      "importance": 0.02344
+    }
+  ],
+  "model_metrics": {
+    "split_type": "random_split_baseline",
+    "growth_accuracy": 0.64,
+    "growth_f1": 0.2703,
+    "growth_auc": 0.6601,
+    "risk_accuracy": 0.72,
+    "risk_f1": 0.5116,
+    "risk_auc": 0.699,
+    "health_mae": 7.7231
+  },
+  "disclaimer": "This MVP uses synthetic data and is not investment advice."
+}

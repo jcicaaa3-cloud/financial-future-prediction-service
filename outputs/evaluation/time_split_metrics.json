@@ -1,0 +1,20 @@
+{
+  "split_type": "time_based_holdout",
+  "train_quarter_min": "2021Q1",
+  "train_quarter_max": "2023Q4",
+  "test_quarters": [
+    "2024Q1",
+    "2024Q2",
+    "2024Q3"
+  ],
+  "n_train_rows": 480,
+  "n_test_rows": 120,
+  "growth_accuracy": 0.775,
+  "growth_f1": 0.4255,
+  "growth_auc": 0.6644,
+  "risk_accuracy": 0.7,
+  "risk_f1": 0.4545,
+  "risk_auc": 0.7243,
+  "health_mae": 8.3085,
+  "warning": "Synthetic-data metric. This is protocol demonstration, not real financial evidence."
+}

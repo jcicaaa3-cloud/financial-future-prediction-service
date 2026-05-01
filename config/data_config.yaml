@@ -1,0 +1,10 @@
+project_name: financial_future_prediction_mvp
+panel_unit: company_quarter
+mock_data:
+  n_companies: 40
+  n_quarters: 16
+  seed: 42
+future_label_horizon_quarters: 1
+notes:
+  - 현재 MVP는 외부 API 없이 mock data로 실행됩니다.
+  - 실제 확장 시 data/raw/financial_panel.csv 형식으로 DART/KRX/거시경제 데이터를 저장하면 됩니다.
