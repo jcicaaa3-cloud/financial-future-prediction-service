@@ -40,8 +40,13 @@ GitHub Pages는 FastAPI 서버를 실행할 수 없기 때문에, 사이트 데�
 
 - 회사 샘플 선택
 - margin, debt ratio, current ratio, volatility, disclosure risk 조정
+- Growth upside / Margin shock / Liquidity crunch / Market stress / Disclosure event 시나리오 버튼
 - risk score와 risk factor 즉시 갱신
+- feature contribution preview 표시
 - decision packet JSON 복사/다운로드
+- 여러 회사 batch scoring 및 CSV 다운로드
+- CSV 붙여넣기/업로드 후 브라우저 내부 scoring
+- cURL 예시 복사
 - pipeline GIF, architecture image, dashboard preview 표시
 
 ## 실행 순서

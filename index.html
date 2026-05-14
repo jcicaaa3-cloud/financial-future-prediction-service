@@ -7,10 +7,10 @@
   <meta name="description" content="Try a browser-only financial risk scoring lab: change company metrics, run scenarios, compare companies, paste CSV, and download a decision packet." />
   <meta property="og:title" content="Quarterly Financial Risk Scoring Live Lab" />
   <meta property="og:description" content="Interactive GitHub Pages demo for a portfolio-grade financial ML service project." />
-  <meta property="og:image" content="assets/github_social_preview.png" />
+  <meta property="og:image" content="site/assets/github_social_preview.png" />
   <meta name="theme-color" content="#08111f" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308111f'/%3E%3Cpath d='M12 43h40M18 36l8-11 8 6 12-17' stroke='%236ee7b7' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="site/styles.css" />
 </head>
 <body>
   <header class="topbar">
@@ -48,7 +48,7 @@
         <p class="scope-note">Synthetic example only. Not investment, lending, credit-screening, or real corporate-rating advice.</p>
       </div>
       <div class="hero-card" aria-label="Project visual preview">
-        <img src="assets/github_hero.png" alt="Financial risk scoring project hero image" />
+        <img src="site/assets/github_hero.png" alt="Financial risk scoring project hero image" />
         <div class="hero-card-overlay">
           <span>Live risk packet</span>
           <strong id="heroRiskPreview">0%</strong>
@@ -279,8 +279,8 @@
         <p class="eyebrow">Pipeline and architecture</p>
         <h2>움직이는 파이프라인 + 아키텍처 그림</h2>
       </div>
-      <img class="wide-visual" src="assets/pipeline_flow.gif" alt="Animated pipeline flow" />
-      <img class="wide-visual" src="assets/architecture_diagram.png" alt="System architecture diagram" />
+      <img class="wide-visual" src="site/assets/pipeline_flow.gif" alt="Animated pipeline flow" />
+      <img class="wide-visual" src="site/assets/architecture_diagram.png" alt="System architecture diagram" />
     </section>
 
     <section class="section-shell visual-section">
@@ -288,7 +288,7 @@
         <p class="eyebrow">Portfolio dashboard</p>
         <h2>로컬 파이프라인은 정적 대시보드 스냅샷도 생성합니다</h2>
       </div>
-      <img class="wide-visual" src="assets/dashboard_preview.png" alt="Dashboard preview" />
+      <img class="wide-visual" src="site/assets/dashboard_preview.png" alt="Dashboard preview" />
     </section>
 
     <section id="run" class="section-shell run-section">
@@ -317,6 +317,6 @@ curl -X POST http://127.0.0.1:8000/v1/predictions \
   </footer>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script src="app.js"></script>
+  <script src="site/app.js"></script>
 </body>
 </html>

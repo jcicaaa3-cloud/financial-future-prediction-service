@@ -23,15 +23,23 @@ This repository is framed as a **service-shaped ML engineering portfolio**, not 
 
 ## Live GitHub Pages demo
 
-Reviewers can try the project without installing Python. The repository includes a static GitHub Pages site with an in-browser scoring simulator, visual pipeline overview, API explanation, and local backend instructions.
+Reviewers can try the project without installing Python. The repository includes a **browser-only live lab** that lets a user change financial indicators, apply shock scenarios, run batch scoring, paste/upload sample CSV rows, copy a cURL request, and download decision-packet JSON/CSV artifacts.
 
 <p align="center">
-  <a href="https://jcicaaa3-cloud.github.io/financial-future-prediction-service/"><strong>Open the live browser demo</strong></a>
+  <a href="https://jcicaaa3-cloud.github.io/financial-future-prediction-service/"><strong>Open the interactive live lab</strong></a>
 </p>
 
 <p align="center">
   <img src="docs/assets/github_pages_demo_preview.png" alt="GitHub Pages browser demo preview" width="100%" />
 </p>
+
+What a reviewer can do directly in the browser:
+
+- choose a sample company and move financial metric sliders;
+- apply Growth upside / Margin shock / Liquidity crunch / Market stress / Disclosure event presets;
+- generate and copy a product-style decision packet JSON;
+- run multi-company batch comparison;
+- paste or upload a small CSV sample and download scored results.
 
 The browser demo is intentionally static: GitHub Pages cannot run the FastAPI backend, so `site/app.js` uses synthetic example companies and explainable heuristic scoring to create a product-style decision packet. The real Python service remains in `app/`, `src/`, and `run_demo.py`.
 
