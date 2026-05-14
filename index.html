@@ -23,11 +23,26 @@
       <a href="#batch">Batch</a>
       <a href="#csv">CSV</a>
       <a href="#api">API</a>
+      <a href="site/evidence.html">Evidence</a>
       <a href="#run">Run locally</a>
     </nav>
   </header>
 
   <main id="top">
+
+    <section class="legal-warning section-shell" role="alert" aria-label="법적 면책 고지">
+      <div class="legal-title"><span aria-hidden="true">⚠</span><strong>중요 고지 / Legal Disclaimer</strong></div>
+      <p>
+        이 사이트는 실제 금융 서비스가 아닌 <strong>포트폴리오·교육·참고용 데모</strong>입니다.
+        모든 데이터, 점수, 설명, JSON, CSV 결과는 synthetic/sample 또는 브라우저 계산 예시이며
+        투자·대출·신용평가·기업평가·법률·회계·세무 자문으로 사용할 수 없습니다.
+      </p>
+      <p>
+        본 사이트 출력물이나 사용자가 입력한 데이터를 근거로 발생하는 투자 손실, 거래 판단, 분쟁,
+        법적 문제 등에 대해 제작자는 법령상 허용되는 범위 내에서 책임을 지지 않습니다.
+        실제 의사결정은 반드시 공식 자료와 전문가 검토를 거치세요.
+      </p>
+    </section>
     <section class="hero section-shell">
       <div class="hero-copy">
         <p class="eyebrow">GitHub Pages · browser-only live demo</p>
@@ -39,6 +54,7 @@
         <div class="hero-actions">
           <a class="button primary" href="#lab">지금 바로 해보기</a>
           <a class="button ghost" href="#csv">내 CSV 붙여넣기</a>
+          <a class="button ghost" href="site/evidence.html">데이터 근거 보기</a>
         </div>
         <div class="step-strip" aria-label="Demo steps">
           <span><b>1</b> 회사 선택</span>
@@ -69,6 +85,34 @@
         <h2>포트폴리오 목적</h2>
         <p>논문식 성능 주장이 아니라 데이터 계약, 누수 방지, API, 모니터링, 리포트 산출물까지 연결하는 서비스형 ML 감각을 보여줍니다.</p>
       </article>
+    </section>
+
+    <section class="section-shell evidence-callout" aria-label="Data evidence callout">
+      <div class="section-heading">
+        <p class="eyebrow">Evidence pack</p>
+        <h2>“과거자료와 입력 데이터는 뭘로 검증하나요?”에 대한 답도 준비했습니다</h2>
+        <p>
+          현재 데모는 synthetic sample이지만, 실데이터 확장 시 OpenDART/DART, KRX, ECOS/KOSIS 같은 공식 자료로 매핑하고,
+          Altman/Ohlson-style financial distress baseline, point-in-time validation, walk-forward backtest로 검증하도록 설계했습니다.
+        </p>
+      </div>
+      <div class="api-grid">
+        <article>
+          <h3>Official data mapping</h3>
+          <p>재무제표·공시·시장자료·거시지표를 각각 공식 데이터 소스에 연결합니다.</p>
+        </article>
+        <article>
+          <h3>Literature baseline</h3>
+          <p>Altman, Ohlson, Fama-French, default forecasting literature를 baseline 설명 근거로 둡니다.</p>
+        </article>
+        <article>
+          <h3>Leakage-aware validation</h3>
+          <p>공시일과 예측일을 분리하고 시간 기준 walk-forward 검증으로 과거자료 테스트를 설계합니다.</p>
+        </article>
+      </div>
+      <div class="hero-actions" style="margin-top: 1.25rem;">
+        <a class="button primary" href="site/evidence.html">데이터 검증 근거 페이지 열기</a>
+      </div>
     </section>
 
     <section id="lab" class="section-shell lab-section">
@@ -216,6 +260,11 @@
         <p class="eyebrow">Bring your own sample</p>
         <h2>CSV를 붙여넣거나 업로드해서 브라우저에서 바로 스코어링</h2>
         <p>서버 전송 없이 현재 브라우저 안에서만 파싱합니다. 공개 페이지라 실제 기업 민감 데이터는 넣지 않는 게 안전합니다.</p>
+
+        <div class="legal-warning compact-warning" role="note" aria-label="CSV 입력 주의사항">
+          <div class="legal-title"><span aria-hidden="true">⚠</span><strong>CSV 입력 주의</strong></div>
+          <p>공개 GitHub Pages 데모입니다. 실제 기업의 미공개정보, 개인정보, 영업비밀, 계정정보, 민감한 재무자료는 입력하지 마세요.</p>
+        </div>
       </div>
       <div class="csv-grid">
         <div class="csv-card">

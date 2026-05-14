@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Evidence & Validation | Financial Risk Scoring Live Lab</title>
+  <meta name="description" content="Data sources, literature references, and validation plan for the financial risk scoring portfolio project." />
+  <meta property="og:title" content="Data Evidence & Validation" />
+  <meta property="og:description" content="How historical data and input features can be validated for the financial risk scoring portfolio." />
+  <meta property="og:image" content="site/assets/github_social_preview.png" />
+  <meta name="theme-color" content="#08111f" />
+  <link rel="stylesheet" href="site/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Back to live lab">
+      <span class="brand-mark">QF</span>
+      <span>Evidence Pack</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html#lab">Live lab</a>
+      <a href="index.html#csv">CSV</a>
+      <a href="index.html#api">API</a>
+      <a href="https://github.com/jcicaaa3-cloud/financial-future-prediction-service">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <section class="legal-warning section-shell" role="alert" aria-label="법적 면책 고지">
+      <div class="legal-title"><span aria-hidden="true">⚠</span><strong>중요 고지 / Legal Disclaimer</strong></div>
+      <p>
+        이 Evidence 페이지는 포트폴리오 프로젝트의 데이터 검증 설계를 설명하는 <strong>참고용 문서</strong>입니다.
+        특정 기업, 증권, 대출, 신용등급, 투자 판단에 대한 권고나 보증이 아닙니다.
+      </p>
+      <p>
+        여기에 제시된 데이터 소스·문헌·검증 절차를 실제 업무에 적용할 경우, 원천 데이터의 최신성·정확성·법적 사용 가능성을 별도로 확인해야 합니다.
+        이 페이지를 근거로 발생하는 손실, 분쟁, 법적 문제 등에 대해 제작자는 법령상 허용되는 범위 내에서 책임을 지지 않습니다.
+      </p>
+    </section>
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">Data evidence · interview defense</p>
+        <h1>“데이터는 뭘로 검증하나요?”에 대한 답</h1>
+        <p class="hero-lead">
+          이 페이지는 포트폴리오 리뷰에서 나오는 데이터 출처, 과거자료 검증, 논문 근거 질문에 답하기 위한
+          <strong>evidence pack</strong>입니다. 현재 데모는 synthetic이지만, 실데이터 확장 시 어떤 공식 자료와
+          어떤 검증 절차를 쓰는지 명확히 보여줍니다.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#sources">데이터 소스 보기</a>
+          <a class="button ghost" href="#interview">면접 답변 보기</a>
+        </div>
+        <p class="scope-note">No investment advice. This is a validation-design note for a portfolio project.</p>
+      </div>
+      <div class="hero-card" aria-label="Evidence preview">
+        <img src="site/assets/architecture_diagram.png" alt="Architecture diagram" />
+        <div class="hero-card-overlay">
+          <span>Validation layers</span>
+          <strong>3</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell note-grid">
+      <article>
+        <h2>1. 공식 소스</h2>
+        <p>재무제표는 OpenDART/DART, 시장자료는 KRX, 거시지표는 ECOS/KOSIS로 매핑합니다.</p>
+      </article>
+      <article>
+        <h2>2. 시간 기준 검증</h2>
+        <p>공시일과 예측일을 분리하고, <code>available_date <= prediction_date</code> 조건으로 미래정보 누수를 막습니다.</p>
+      </article>
+      <article>
+        <h2>3. 문헌 baseline</h2>
+        <p>Altman, Ohlson, Fama-French, Bharath-Shumway 흐름을 참고해 ratio/logit/baseline 비교를 둡니다.</p>
+      </article>
+    </section>
+
+    <section id="sources" class="section-shell">
+      <div class="section-heading">
+        <p class="eyebrow">Source mapping</p>
+        <h2>입력 데이터는 어떤 자료로 검증할 수 있나</h2>
+        <p>아래 매핑은 “현재 demo data”가 아니라 “실데이터 확장 시 검증 가능한 기준 소스”입니다.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Input</th><th>Official source</th><th>Why it is defensible</th><th>Project file</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>재무제표</td><td>OpenDART / DART</td><td>상장사 정기보고서 기반 재무정보 API와 기업공시 저장소</td><td><code>financial_statement_quarterly.csv</code></td></tr>
+            <tr><td>공시 이벤트</td><td>DART reports</td><td>분기·반기·사업보고서 및 주요사항보고서 기반 이벤트 추출</td><td><code>disclosure_features_quarterly.csv</code></td></tr>
+            <tr><td>시장자료</td><td>KRX Data Marketplace / Open API</td><td>거래소 시장정보, 가격, 거래량, 통계 데이터</td><td><code>market_quarterly.csv</code></td></tr>
+            <tr><td>거시경제</td><td>BOK ECOS / KOSIS</td><td>중앙은행 및 국가통계포털의 공개 통계 API</td><td><code>macro_quarterly.csv</code></td></tr>
+            <tr><td>전자공시 포맷</td><td>XBRL</td><td>business reporting을 위한 표준화된 데이터 교환 방식</td><td>schema / account mapping</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-shell">
+      <div class="section-heading">
+        <p class="eyebrow">Literature anchors</p>
+        <h2>논문 근거는 “완성 모델 인증”이 아니라 baseline 설계 근거</h2>
+      </div>
+      <div class="api-grid">
+        <article>
+          <h3>Altman Z-score</h3>
+          <p>재무비율을 이용한 기업 부실/파산 예측의 고전 baseline입니다. 수익성, 유동성, 레버리지 계열 feature를 쓰는 이유를 설명할 수 있습니다.</p>
+        </article>
+        <article>
+          <h3>Ohlson O-score</h3>
+          <p>재무비율 기반의 probabilistic/logit bankruptcy prediction 흐름입니다. risk score를 확률/점수로 내는 방식의 근거가 됩니다.</p>
+        </article>
+        <article>
+          <h3>Fama-French factors</h3>
+          <p>시장, 규모, book-to-market 등 공통 위험요인 문헌입니다. 시장자료와 재무자료를 함께 보는 근거로 사용합니다.</p>
+        </article>
+        <article>
+          <h3>Bharath-Shumway</h3>
+          <p>default prediction에서 복잡한 모델과 단순 baseline의 out-of-sample 비교가 중요하다는 점을 보여줍니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell">
+      <div class="section-heading">
+        <p class="eyebrow">Validation protocol</p>
+        <h2>실데이터를 붙이면 이렇게 검증합니다</h2>
+      </div>
+      <div class="batch-card">
+        <ol class="evidence-list">
+          <li><strong>Source log:</strong> API source, report number, report date, retrieval timestamp 저장</li>
+          <li><strong>Schema validation:</strong> 필수 컬럼, 타입, 범위, 중복 키 검사</li>
+          <li><strong>Point-in-time rule:</strong> 예측 시점 이후 공시된 정보는 feature에서 제외</li>
+          <li><strong>Walk-forward backtest:</strong> 과거 분기로 학습하고 이후 분기를 예측</li>
+          <li><strong>Baseline comparison:</strong> dummy, logistic, ratio score, random forest 비교</li>
+          <li><strong>Calibration & slices:</strong> Brier score, calibration, sector별 성능, top-K capture 확인</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="interview" class="section-shell run-section">
+      <div class="section-heading">
+        <p class="eyebrow">Interview answer</p>
+        <h2>질문 나오면 이렇게 답하면 됩니다</h2>
+      </div>
+      <div class="terminal-grid">
+        <pre class="code-block"><code>20초 버전
+데이터 근거는 OpenDART/DART, KRX, ECOS/KOSIS 같은 공식 공개 데이터로 잡고 있습니다.
+모델 근거는 Altman, Ohlson 같은 financial distress 문헌과 시장위험요인 문헌을 baseline으로 삼습니다.
+중요한 건 random split이 아니라 공시일 기준 point-in-time backtest로 미래 정보 누수를 막는 것입니다.
+현재 데모는 synthetic이라 실제 성능 주장은 아니고, 실데이터 검증 설계를 보여주는 포트폴리오입니다.</code></pre>
+        <pre class="code-block"><code>1분 버전
+현재 공개 데모는 synthetic data를 사용하지만, 실데이터 확장 시 재무제표는 OpenDART/DART,
+시장자료는 KRX, 거시지표는 ECOS/KOSIS에서 가져오도록 설계했습니다.
+입력 데이터는 schema validation으로 타입과 범위를 검증하고, report date와 prediction date를 분리해
+미래 공시 정보가 feature에 섞이지 않도록 합니다.
+방법론적으로는 Altman Z-score나 Ohlson O-score 같은 financial distress baseline을 두고,
+ML 모델은 walk-forward validation으로 baseline 대비 성능과 calibration을 확인합니다.</code></pre>
+      </div>
+    </section>
+
+    <section class="section-shell">
+      <div class="section-heading">
+        <p class="eyebrow">References</p>
+        <h2>검증 근거 링크</h2>
+      </div>
+      <div class="api-grid">
+        <article><h3>OpenDART</h3><p><a href="https://engopendart.fss.or.kr/guide/main.do?apiGrpCd=DE003">Developer guide</a></p></article>
+        <article><h3>DART</h3><p><a href="https://englishdart.fss.or.kr/">Corporate filings repository</a></p></article>
+        <article><h3>KRX</h3><p><a href="https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd?locale=en">Data Marketplace</a> · <a href="https://openapi.krx.co.kr/">Open API</a></p></article>
+        <article><h3>BOK ECOS</h3><p><a href="https://ecos.bok.or.kr/api/">Open API</a></p></article>
+        <article><h3>KOSIS</h3><p><a href="https://kosis.kr/openapi/">OpenAPI</a></p></article>
+        <article><h3>XBRL</h3><p><a href="https://www.xbrl.org/">XBRL International</a></p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer section-shell">
+    <p>Evidence pack for a portfolio demo. Synthetic demo only. Not financial advice.</p>
+    <a href="index.html">Back to live lab</a>
+  </footer>
+</body>
+</html>

@@ -288,7 +288,11 @@ function buildPacket(input, scores) {
       contribution_preview: round(row.value),
       note: row.note
     })),
-    demo_scope: "Static GitHub Pages simulator using synthetic examples and explainable heuristic scoring. The real Python/FastAPI backend is separate. Not investment advice."
+    demo_scope: "Static GitHub Pages simulator using synthetic examples and explainable heuristic scoring. The real Python/FastAPI backend is separate. Not investment advice.",
+    legal_disclaimer: {
+      ko: "포트폴리오와 기술 시연을 위한 참고용 데모입니다. 실제 투자, 대출, 신용평가, 기업평가, 법률, 세무, 회계 의사결정에 사용해서는 안 됩니다. 이 데모를 참고하여 발생하는 손실, 법적 분쟁 또는 거래상 불이익에 대해 제작자는 책임을 부담하지 않습니다.",
+      en: "Reference-only portfolio demo. Not financial, investment, lending, credit-rating, legal, tax, or accounting advice. The creator assumes no responsibility for losses, disputes, or adverse outcomes caused by relying on this demo."
+    }
   };
 }
 
