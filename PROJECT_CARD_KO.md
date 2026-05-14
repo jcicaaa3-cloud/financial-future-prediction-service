@@ -1,34 +1,62 @@
-# 금융 미래 상태 예측 서비스 포트폴리오 카드
+# 프로젝트 카드: Quarterly Financial Risk Scoring Service
 
-## 한 줄 소개
+## 프로젝트 목적
 
-기업-분기 데이터를 받아 다음 분기의 성장성, 위험 신호, 재무 건전성 점수를 산출하는 재무 AI 파이프라인입니다.
+분기 재무제표, 시장 지표, 거시 지표, 공시 기반 위험 신호를 입력받아 다음 분기 재무 악화 가능성을 점수화하는 **ML 기반 FastAPI 백엔드 서비스**입니다.
 
-## 프로젝트 목표
+이 프로젝트는 실제 투자/대출 판단 모델이 아니라, **금융 도메인 ML 프로젝트를 서비스 형태로 설계하고 검증하고 문서화하고 GitHub에서 보기 좋게 보여주는 역량**을 보여주기 위한 포트폴리오입니다.
 
-이 프로젝트는 주가 단기 예측보다 기업 상태 진단에 초점을 맞춥니다. 재무제표, 시장 지표, 거시경제 지표, 공시 기반 위험 신호를 같은 분기 단위로 맞추고, 다음 분기 라벨을 만들어 예측 결과를 JSON과 리포트로 출력합니다.
+## 핵심 기능
 
-## 구현 범위
+- CSV data contract 및 schema validation
+- company-quarter panel 생성
+- leakage-aware feature engineering
+- chronological split / walk-forward evaluation
+- dummy, logistic regression, random forest baseline leaderboard
+- FastAPI single prediction API
+- FastAPI batch prediction API
+- model-used feature explanation packet
+- data quality report
+- quarter drift smoke check
+- markdown risk report
+- LLM analysis prompt packet
+- static HTML portfolio dashboard
+- Docker / GitHub Actions CI / pytest
+- GitHub README hero image, pipeline GIF, architecture diagram, social preview asset
 
-- CSV 입력 계약 설계
-- 입력 스키마 검증
-- 기업-분기 패널 데이터 생성
-- 재무비율 및 rolling 변수 생성
-- 다음 분기 성장성, 위험성, 건전성 라벨 생성
-- RandomForest baseline 학습
-- 기업별 예측 JSON 생성
-- decision packet 생성
-- stress test 결과 생성
-- LLM 보고서 작성용 입력 패킷 생성
+## 실행 방법
 
-## 면접 설명용 문장
+```bash
+pip install -r requirements.txt
+python run_demo.py --company-id C003
+pytest -q
+```
 
-제가 만든 프로젝트는 기업의 다음 분기 상태를 조기 진단하는 재무 AI 파이프라인입니다. 기업별 재무제표와 시장 지표, 거시경제 지표, 공시 기반 위험 신호를 분기 단위로 병합하고, 미래 라벨을 만들어 성장 가능성, 위험 신호, 재무 건전성 점수를 예측하도록 구성했습니다. 결과는 JSON, Markdown 리포트, API 응답 형태, LLM 보고서 작성용 입력 패킷으로 이어집니다.
+포트폴리오 스냅샷 생성:
 
-## 방어 포인트
+```bash
+python scripts/build_portfolio_snapshot.py --company-id C003
+```
 
-현재 sample data는 실제 투자 성능을 주장하기 위한 자료가 아닙니다. 입력 계약, 검증 흐름, 모델 학습, 결과 출력까지 이어지는 소프트웨어 흐름을 검증하기 위한 인공 샘플입니다.
+브라우저에서 열기:
 
-RandomForest는 최종 성능 모델이 아니라 baseline입니다. 입력과 출력 형식을 유지하면 LightGBM, XGBoost, CatBoost, temporal model로 바꿀 수 있습니다.
+```text
+examples/portfolio_snapshot/portfolio_dashboard.html
+```
 
-LLM은 숫자를 예측하는 모델이 아니라 결과를 문서화하고 설명 메모를 만드는 레이어로 사용됩니다.
+README 이미지 재생성:
+
+```bash
+python scripts/render_github_assets.py
+```
+
+## 면접에서 강조할 부분
+
+- “성능 좋은 금융 예측 모델”이 아니라 “금융 ML 서비스를 안전하게 구조화한 프로젝트”라고 설명한다.
+- synthetic data를 사용했기 때문에 real-world accuracy를 주장하지 않는다.
+- 대신 leakage 방지, time-based validation, API, monitoring, model card, artifact design, GitHub storytelling을 강조한다.
+- README 이미지와 대시보드는 채용자가 코드를 실행하지 않아도 프로젝트 구조를 빠르게 이해하도록 만든 장치라고 설명한다.
+
+## 한 줄 설명
+
+> Leakage-aware financial risk scoring service with FastAPI inference, batch scoring, chronological validation, walk-forward evaluation, baseline leaderboard, monitoring artifacts, and a GitHub-ready portfolio dashboard.

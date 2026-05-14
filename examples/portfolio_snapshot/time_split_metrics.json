@@ -1,0 +1,423 @@
+{
+  "created_at": "2026-05-14T01:13:14+00:00",
+  "split": {
+    "type": "chronological",
+    "train_quarters": [
+      "2021Q1",
+      "2021Q2",
+      "2021Q3",
+      "2021Q4",
+      "2022Q1",
+      "2022Q2",
+      "2022Q3",
+      "2022Q4",
+      "2023Q1",
+      "2023Q2",
+      "2023Q3",
+      "2023Q4",
+      "2024Q1",
+      "2024Q2",
+      "2024Q3"
+    ],
+    "test_quarters": [
+      "2024Q4",
+      "2025Q1",
+      "2025Q2",
+      "2025Q3"
+    ],
+    "train_rows": 600,
+    "test_rows": 160
+  },
+  "targets": {
+    "target_margin_deterioration": {
+      "selected_model": "random_forest",
+      "selected_metric": {
+        "positive_rate": 0.08125,
+        "f1_at_0_5": 0.2903225806451613,
+        "brier": 0.1749233209844408,
+        "roc_auc": 0.7742019884877028,
+        "average_precision": 0.38505879023306805
+      },
+      "all_models": {
+        "dummy_prior": {
+          "positive_rate": 0.08125,
+          "f1_at_0_5": 0.0,
+          "brier": 0.08059027777777779,
+          "roc_auc": 0.5,
+          "average_precision": 0.08125
+        },
+        "logistic_regression": {
+          "positive_rate": 0.08125,
+          "f1_at_0_5": 0.16,
+          "brier": 0.15212949423550942,
+          "roc_auc": 0.695447409733124,
+          "average_precision": 0.18391117685241803
+        },
+        "random_forest": {
+          "positive_rate": 0.08125,
+          "f1_at_0_5": 0.2903225806451613,
+          "brier": 0.1749233209844408,
+          "roc_auc": 0.7742019884877028,
+          "average_precision": 0.38505879023306805
+        }
+      },
+      "class_balance_train": 0.15833333333333333,
+      "class_balance_test": 0.08125,
+      "top_features": [
+        {
+          "feature": "operating_margin_change_qoq",
+          "importance": 0.212815,
+          "raw_importance": 0.212815,
+          "source": "feature_importances_",
+          "interpretation_hint": "lower values usually increase profitability risk"
+        },
+        {
+          "feature": "operating_margin",
+          "importance": 0.056073,
+          "raw_importance": 0.056073,
+          "source": "feature_importances_",
+          "interpretation_hint": "lower values usually increase profitability risk"
+        },
+        {
+          "feature": "operating_income",
+          "importance": 0.051732,
+          "raw_importance": 0.051732,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "net_income",
+          "importance": 0.04864,
+          "raw_importance": 0.04864,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "ocf_margin",
+          "importance": 0.046521,
+          "raw_importance": 0.046521,
+          "source": "feature_importances_",
+          "interpretation_hint": "lower values usually increase cash-flow risk"
+        },
+        {
+          "feature": "disclosure_risk_lag1",
+          "importance": 0.045879,
+          "raw_importance": 0.045879,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "market_cap",
+          "importance": 0.039988,
+          "raw_importance": 0.039988,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "net_margin",
+          "importance": 0.03932,
+          "raw_importance": 0.03932,
+          "source": "feature_importances_",
+          "interpretation_hint": "lower values usually increase profitability risk"
+        },
+        {
+          "feature": "revenue",
+          "importance": 0.038277,
+          "raw_importance": 0.038277,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "business_cycle_index",
+          "importance": 0.038176,
+          "raw_importance": 0.038176,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "revenue_growth_qoq",
+          "importance": 0.036791,
+          "raw_importance": 0.036791,
+          "source": "feature_importances_",
+          "interpretation_hint": "negative values usually increase growth risk"
+        },
+        {
+          "feature": "total_equity",
+          "importance": 0.031121,
+          "raw_importance": 0.031121,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "operating_cash_flow",
+          "importance": 0.029132,
+          "raw_importance": 0.029132,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "volatility_3m_roll4_mean",
+          "importance": 0.019995,
+          "raw_importance": 0.019995,
+          "source": "feature_importances_",
+          "interpretation_hint": "higher values usually increase market risk"
+        },
+        {
+          "feature": "operating_margin_roll4_mean",
+          "importance": 0.019116,
+          "raw_importance": 0.019116,
+          "source": "feature_importances_",
+          "interpretation_hint": "lower values usually increase profitability risk"
+        },
+        {
+          "feature": "macro_rate",
+          "importance": 0.018717,
+          "raw_importance": 0.018717,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "stock_return_3m",
+          "importance": 0.018534,
+          "raw_importance": 0.018534,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "inflation",
+          "importance": 0.018263,
+          "raw_importance": 0.018263,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "current_ratio",
+          "importance": 0.018263,
+          "raw_importance": 0.018263,
+          "source": "feature_importances_",
+          "interpretation_hint": "lower values usually increase liquidity risk"
+        },
+        {
+          "feature": "current_assets",
+          "importance": 0.018093,
+          "raw_importance": 0.018093,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        }
+      ]
+    },
+    "target_market_drawdown_proxy": {
+      "selected_model": "dummy_prior",
+      "selected_metric": {
+        "positive_rate": 0.19375,
+        "f1_at_0_5": 0.0,
+        "brier": 0.15625000000000006,
+        "roc_auc": 0.5,
+        "average_precision": 0.19375
+      },
+      "all_models": {
+        "dummy_prior": {
+          "positive_rate": 0.19375,
+          "f1_at_0_5": 0.0,
+          "brier": 0.15625000000000006,
+          "roc_auc": 0.5,
+          "average_precision": 0.19375
+        },
+        "logistic_regression": {
+          "positive_rate": 0.19375,
+          "f1_at_0_5": 0.16666666666666666,
+          "brier": 0.21214647472270073,
+          "roc_auc": 0.4651162790697675,
+          "average_precision": 0.18405901331406094
+        },
+        "random_forest": {
+          "positive_rate": 0.19375,
+          "f1_at_0_5": 0.24242424242424243,
+          "brier": 0.21093046602598592,
+          "roc_auc": 0.4979994998749687,
+          "average_precision": 0.1987348041321064
+        }
+      },
+      "class_balance_train": 0.2,
+      "class_balance_test": 0.19375,
+      "top_features": []
+    },
+    "target_liquidity_stress": {
+      "selected_model": "random_forest",
+      "selected_metric": {
+        "positive_rate": 0.08125,
+        "f1_at_0_5": 0.27586206896551724,
+        "brier": 0.09717732387519787,
+        "roc_auc": 0.8063840920983778,
+        "average_precision": 0.224220665469344
+      },
+      "all_models": {
+        "dummy_prior": {
+          "positive_rate": 0.08125,
+          "f1_at_0_5": 0.0,
+          "brier": 0.07471111111111113,
+          "roc_auc": 0.5,
+          "average_precision": 0.08125
+        },
+        "logistic_regression": {
+          "positive_rate": 0.08125,
+          "f1_at_0_5": 0.3076923076923077,
+          "brier": 0.10080902685573907,
+          "roc_auc": 0.7367870225013082,
+          "average_precision": 0.26959273227040714
+        },
+        "random_forest": {
+          "positive_rate": 0.08125,
+          "f1_at_0_5": 0.27586206896551724,
+          "brier": 0.09717732387519787,
+          "roc_auc": 0.8063840920983778,
+          "average_precision": 0.224220665469344
+        }
+      },
+      "class_balance_train": 0.07333333333333333,
+      "class_balance_test": 0.08125,
+      "top_features": [
+        {
+          "feature": "debt_to_equity",
+          "importance": 0.116977,
+          "raw_importance": 0.116977,
+          "source": "feature_importances_",
+          "interpretation_hint": "higher values usually increase leverage risk"
+        },
+        {
+          "feature": "operating_income",
+          "importance": 0.088397,
+          "raw_importance": 0.088397,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "operating_margin_roll4_mean",
+          "importance": 0.069188,
+          "raw_importance": 0.069188,
+          "source": "feature_importances_",
+          "interpretation_hint": "lower values usually increase profitability risk"
+        },
+        {
+          "feature": "ocf_margin",
+          "importance": 0.061388,
+          "raw_importance": 0.061388,
+          "source": "feature_importances_",
+          "interpretation_hint": "lower values usually increase cash-flow risk"
+        },
+        {
+          "feature": "interest_coverage",
+          "importance": 0.059747,
+          "raw_importance": 0.059747,
+          "source": "feature_importances_",
+          "interpretation_hint": "lower values usually increase liquidity and debt-service risk"
+        },
+        {
+          "feature": "net_margin",
+          "importance": 0.057257,
+          "raw_importance": 0.057257,
+          "source": "feature_importances_",
+          "interpretation_hint": "lower values usually increase profitability risk"
+        },
+        {
+          "feature": "stock_return_3m_roll4_mean",
+          "importance": 0.044669,
+          "raw_importance": 0.044669,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "volatility_3m_lag1",
+          "importance": 0.042101,
+          "raw_importance": 0.042101,
+          "source": "feature_importances_",
+          "interpretation_hint": "higher values usually increase market risk"
+        },
+        {
+          "feature": "volatility_3m_roll4_mean",
+          "importance": 0.038762,
+          "raw_importance": 0.038762,
+          "source": "feature_importances_",
+          "interpretation_hint": "higher values usually increase market risk"
+        },
+        {
+          "feature": "current_liabilities",
+          "importance": 0.036705,
+          "raw_importance": 0.036705,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "operating_cash_flow",
+          "importance": 0.032249,
+          "raw_importance": 0.032249,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "market_cap",
+          "importance": 0.031291,
+          "raw_importance": 0.031291,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "equity_ratio",
+          "importance": 0.030118,
+          "raw_importance": 0.030118,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "operating_margin_change_qoq",
+          "importance": 0.023211,
+          "raw_importance": 0.023211,
+          "source": "feature_importances_",
+          "interpretation_hint": "lower values usually increase profitability risk"
+        },
+        {
+          "feature": "revenue_growth_qoq_roll4_std",
+          "importance": 0.023118,
+          "raw_importance": 0.023118,
+          "source": "feature_importances_",
+          "interpretation_hint": "negative values usually increase growth risk"
+        },
+        {
+          "feature": "total_equity",
+          "importance": 0.022177,
+          "raw_importance": 0.022177,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "debt_ratio",
+          "importance": 0.021702,
+          "raw_importance": 0.021702,
+          "source": "feature_importances_",
+          "interpretation_hint": "higher values usually increase balance-sheet risk"
+        },
+        {
+          "feature": "volatility_3m_roll4_std",
+          "importance": 0.020498,
+          "raw_importance": 0.020498,
+          "source": "feature_importances_",
+          "interpretation_hint": "higher values usually increase market risk"
+        },
+        {
+          "feature": "revenue",
+          "importance": 0.015577,
+          "raw_importance": 0.015577,
+          "source": "feature_importances_",
+          "interpretation_hint": "model-used feature; inspect with domain context"
+        },
+        {
+          "feature": "operating_margin",
+          "importance": 0.015245,
+          "raw_importance": 0.015245,
+          "source": "feature_importances_",
+          "interpretation_hint": "lower values usually increase profitability risk"
+        }
+      ]
+    }
+  }
+}

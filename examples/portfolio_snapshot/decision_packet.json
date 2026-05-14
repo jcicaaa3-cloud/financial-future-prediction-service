@@ -1,0 +1,153 @@
+{
+  "request_id": "portfolio-snapshot",
+  "status": "completed",
+  "created_at": "2026-05-14T01:13:16+00:00",
+  "company_id": "C003",
+  "company_name": "SampleCompany_003",
+  "sector": "IT",
+  "quarter": "2025Q3",
+  "feature_available_at": "2025-11-14",
+  "scores": {
+    "margin_deterioration_risk": 0.3618,
+    "market_drawdown_proxy_risk": 0.2,
+    "liquidity_stress_risk": 0.0,
+    "financial_health_score": 0.8127
+  },
+  "risk_level": "low",
+  "top_risk_factors": [],
+  "positive_factors": [
+    "Healthy current ratio",
+    "Strong operating margin",
+    "Solid operating cash-flow margin",
+    "Positive revenue growth"
+  ],
+  "selected_models": {
+    "target_margin_deterioration": "random_forest",
+    "target_market_drawdown_proxy": "dummy_prior",
+    "target_liquidity_stress": "random_forest"
+  },
+  "feature_snapshot": {
+    "operating_margin": 0.150828,
+    "net_margin": 0.086896,
+    "current_ratio": 5.534034,
+    "debt_ratio": 0.46634,
+    "interest_coverage": 18.133627,
+    "ocf_margin": 0.150374,
+    "revenue_growth_qoq": 0.074277,
+    "stock_return_3m": 0.02297,
+    "volatility_3m": 0.27428,
+    "disclosure_risk_score": 0.23154,
+    "major_event_flag": 0.0,
+    "macro_rate": 4.114
+  },
+  "model_explanations": {
+    "target_margin_deterioration": [
+      {
+        "feature": "operating_margin_change_qoq",
+        "current_value": -0.015179,
+        "global_importance": 0.212815,
+        "interpretation_hint": "lower values usually increase profitability risk"
+      },
+      {
+        "feature": "operating_margin",
+        "current_value": 0.150828,
+        "global_importance": 0.056073,
+        "interpretation_hint": "lower values usually increase profitability risk"
+      },
+      {
+        "feature": "operating_income",
+        "current_value": 55045.17,
+        "global_importance": 0.051732,
+        "interpretation_hint": "model-used feature; inspect with domain context"
+      },
+      {
+        "feature": "net_income",
+        "current_value": 31713.09,
+        "global_importance": 0.04864,
+        "interpretation_hint": "model-used feature; inspect with domain context"
+      },
+      {
+        "feature": "ocf_margin",
+        "current_value": 0.150374,
+        "global_importance": 0.046521,
+        "interpretation_hint": "lower values usually increase cash-flow risk"
+      }
+    ],
+    "target_market_drawdown_proxy": [],
+    "target_liquidity_stress": [
+      {
+        "feature": "debt_to_equity",
+        "current_value": 0.873853,
+        "global_importance": 0.116977,
+        "interpretation_hint": "higher values usually increase leverage risk"
+      },
+      {
+        "feature": "operating_income",
+        "current_value": 55045.17,
+        "global_importance": 0.088397,
+        "interpretation_hint": "model-used feature; inspect with domain context"
+      },
+      {
+        "feature": "operating_margin_roll4_mean",
+        "current_value": 0.149767,
+        "global_importance": 0.069188,
+        "interpretation_hint": "lower values usually increase profitability risk"
+      },
+      {
+        "feature": "ocf_margin",
+        "current_value": 0.150374,
+        "global_importance": 0.061388,
+        "interpretation_hint": "lower values usually increase cash-flow risk"
+      },
+      {
+        "feature": "interest_coverage",
+        "current_value": 18.133627,
+        "global_importance": 0.059747,
+        "interpretation_hint": "lower values usually increase liquidity and debt-service risk"
+      }
+    ]
+  },
+  "model_created_at": "2026-05-14T01:13:14+00:00",
+  "report_path": "artifacts/portfolio_snapshot_work/requests/portfolio-snapshot/reports/C003_risk_report.md",
+  "llm_prompt_path": "artifacts/portfolio_snapshot_work/requests/portfolio-snapshot/llm_inputs/C003_llm_prompt.md",
+  "disclaimer": "Synthetic/sample or user-supplied data output. Not investment, lending, credit, trading, or corporate-rating advice. Human review is required.",
+  "decision_packet_path": "artifacts/portfolio_snapshot_work/requests/portfolio-snapshot/decision_packets/portfolio-snapshot.json",
+  "dashboard_path": "artifacts/portfolio_snapshot_work/requests/portfolio-snapshot/dashboard/C003_portfolio_dashboard.html",
+  "metrics_path": "artifacts/portfolio_snapshot_work/requests/portfolio-snapshot/metrics/time_split_metrics.json",
+  "walk_forward_metrics_path": "artifacts/portfolio_snapshot_work/requests/portfolio-snapshot/metrics/walk_forward_metrics.json",
+  "data_summary_path": "artifacts/portfolio_snapshot_work/requests/portfolio-snapshot/data_summary.json",
+  "data_quality_path": "artifacts/portfolio_snapshot_work/requests/portfolio-snapshot/monitoring/data_quality_report.json",
+  "drift_report_path": "artifacts/portfolio_snapshot_work/requests/portfolio-snapshot/monitoring/quarter_drift_report.json",
+  "metrics_preview": {
+    "target_margin_deterioration": {
+      "selected_model": "random_forest",
+      "selected_metric": {
+        "positive_rate": 0.08125,
+        "f1_at_0_5": 0.2903225806451613,
+        "brier": 0.1749233209844408,
+        "roc_auc": 0.7742019884877028,
+        "average_precision": 0.38505879023306805
+      }
+    },
+    "target_market_drawdown_proxy": {
+      "selected_model": "dummy_prior",
+      "selected_metric": {
+        "positive_rate": 0.19375,
+        "f1_at_0_5": 0.0,
+        "brier": 0.15625000000000006,
+        "roc_auc": 0.5,
+        "average_precision": 0.19375
+      }
+    },
+    "target_liquidity_stress": {
+      "selected_model": "random_forest",
+      "selected_metric": {
+        "positive_rate": 0.08125,
+        "f1_at_0_5": 0.27586206896551724,
+        "brier": 0.09717732387519787,
+        "roc_auc": 0.8063840920983778,
+        "average_precision": 0.224220665469344
+      }
+    }
+  }
+}

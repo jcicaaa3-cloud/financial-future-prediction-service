@@ -1,0 +1,5 @@
+{
+  "company_ids": ["C001", "C003", "C007"],
+  "input_dir": "data/input/sample",
+  "artifact_dir": "artifacts"
+}

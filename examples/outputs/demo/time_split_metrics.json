@@ -1,0 +1,138 @@
+{
+  "created_at": "2026-05-13T13:23:15+00:00",
+  "split": {
+    "type": "chronological",
+    "train_quarters": [
+      "2021Q1",
+      "2021Q2",
+      "2021Q3",
+      "2021Q4",
+      "2022Q1",
+      "2022Q2",
+      "2022Q3",
+      "2022Q4",
+      "2023Q1",
+      "2023Q2",
+      "2023Q3",
+      "2023Q4",
+      "2024Q1",
+      "2024Q2",
+      "2024Q3"
+    ],
+    "test_quarters": [
+      "2024Q4",
+      "2025Q1",
+      "2025Q2",
+      "2025Q3"
+    ],
+    "train_rows": 600,
+    "test_rows": 160
+  },
+  "targets": {
+    "target_margin_deterioration": {
+      "selected_model": "random_forest",
+      "selected_metric": {
+        "positive_rate": 0.08125,
+        "f1_at_0_5": 0.2,
+        "brier": 0.13704716102514336,
+        "roc_auc": 0.7362637362637363,
+        "average_precision": 0.186870010380108
+      },
+      "all_models": {
+        "dummy_prior": {
+          "positive_rate": 0.08125,
+          "f1_at_0_5": 0.0,
+          "brier": 0.08059027777777779,
+          "roc_auc": 0.5,
+          "average_precision": 0.08125
+        },
+        "logistic_regression": {
+          "positive_rate": 0.08125,
+          "f1_at_0_5": 0.16,
+          "brier": 0.15182898251878724,
+          "roc_auc": 0.696493982208268,
+          "average_precision": 0.18399161889392715
+        },
+        "random_forest": {
+          "positive_rate": 0.08125,
+          "f1_at_0_5": 0.2,
+          "brier": 0.13704716102514336,
+          "roc_auc": 0.7362637362637363,
+          "average_precision": 0.186870010380108
+        }
+      },
+      "class_balance_train": 0.15833333333333333,
+      "class_balance_test": 0.08125
+    },
+    "target_market_drawdown_proxy": {
+      "selected_model": "dummy_prior",
+      "selected_metric": {
+        "positive_rate": 0.19375,
+        "f1_at_0_5": 0.0,
+        "brier": 0.15625000000000006,
+        "roc_auc": 0.5,
+        "average_precision": 0.19375
+      },
+      "all_models": {
+        "dummy_prior": {
+          "positive_rate": 0.19375,
+          "f1_at_0_5": 0.0,
+          "brier": 0.15625000000000006,
+          "roc_auc": 0.5,
+          "average_precision": 0.19375
+        },
+        "logistic_regression": {
+          "positive_rate": 0.19375,
+          "f1_at_0_5": 0.16666666666666666,
+          "brier": 0.2119690882857687,
+          "roc_auc": 0.4656164041010253,
+          "average_precision": 0.1843360884389007
+        },
+        "random_forest": {
+          "positive_rate": 0.19375,
+          "f1_at_0_5": 0.09523809523809523,
+          "brier": 0.18642067318198285,
+          "roc_auc": 0.4608652163040761,
+          "average_precision": 0.19122465741538164
+        }
+      },
+      "class_balance_train": 0.2,
+      "class_balance_test": 0.19375
+    },
+    "target_liquidity_stress": {
+      "selected_model": "random_forest",
+      "selected_metric": {
+        "positive_rate": 0.08125,
+        "f1_at_0_5": 0.2,
+        "brier": 0.07688054327136007,
+        "roc_auc": 0.8246991104133962,
+        "average_precision": 0.3017046180171729
+      },
+      "all_models": {
+        "dummy_prior": {
+          "positive_rate": 0.08125,
+          "f1_at_0_5": 0.0,
+          "brier": 0.07471111111111113,
+          "roc_auc": 0.5,
+          "average_precision": 0.08125
+        },
+        "logistic_regression": {
+          "positive_rate": 0.08125,
+          "f1_at_0_5": 0.3076923076923077,
+          "brier": 0.10038047116596953,
+          "roc_auc": 0.7367870225013082,
+          "average_precision": 0.2697004365180257
+        },
+        "random_forest": {
+          "positive_rate": 0.08125,
+          "f1_at_0_5": 0.2,
+          "brier": 0.07688054327136007,
+          "roc_auc": 0.8246991104133962,
+          "average_precision": 0.3017046180171729
+        }
+      },
+      "class_balance_train": 0.07333333333333333,
+      "class_balance_test": 0.08125
+    }
+  }
+}

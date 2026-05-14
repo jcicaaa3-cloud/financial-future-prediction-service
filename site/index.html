@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quarterly Financial Risk Scoring Service</title>
+  <meta name="description" content="Browser demo for a portfolio-grade financial risk scoring service with FastAPI, validation, monitoring, and dashboard artifacts." />
+  <meta property="og:title" content="Quarterly Financial Risk Scoring Service" />
+  <meta property="og:description" content="Try a static browser demo of a leakage-aware financial ML service portfolio project." />
+  <meta property="og:image" content="assets/github_social_preview.png" />
+  <meta name="theme-color" content="#0b1020" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1020'/%3E%3Cpath d='M14 42h36M18 36l8-9 7 6 11-16' stroke='%236ee7b7' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Go to top">
+      <span class="brand-mark">QF</span>
+      <span>Financial Risk Scoring</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#demo">Try demo</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#api">API</a>
+      <a href="#run">Run locally</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">GitHub Pages interactive portfolio demo</p>
+        <h1>Quarterly Financial Risk Scoring Service</h1>
+        <p class="hero-lead">
+          분기 재무·시장·공시 데이터를 받아 다음 분기 재무 악화 리스크 신호를 산출하는
+          <strong>서비스형 ML 포트폴리오</strong>입니다. 브라우저 데모는 정적 사이트에서 바로 실행됩니다.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#demo">브라우저에서 바로 해보기</a>
+          <a class="button ghost" href="#run">백엔드 실행 방법</a>
+        </div>
+        <div class="trust-row" aria-label="Project highlights">
+          <span>FastAPI</span>
+          <span>Walk-forward validation</span>
+          <span>Monitoring artifacts</span>
+          <span>Dashboard snapshot</span>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="Project visual preview">
+        <img src="assets/github_hero.png" alt="Financial risk scoring project hero image" />
+      </div>
+    </section>
+
+    <section class="section-shell note-grid" aria-label="Scope notes">
+      <article>
+        <h2>이 사이트의 역할</h2>
+        <p>
+          GitHub Pages는 서버를 띄울 수 없는 정적 호스팅입니다. 그래서 이 페이지는 누구나 바로 만져볼 수 있는
+          <strong>in-browser scoring simulator</strong>로 만들었습니다. 실제 Python/FastAPI 파이프라인은 저장소에서 실행합니다.
+        </p>
+      </article>
+      <article>
+        <h2>안전한 포지셔닝</h2>
+        <p>
+          이 데모는 synthetic example과 설명 가능한 휴리스틱을 사용합니다. 투자 조언, 대출 판단, 신용평가,
+          실제 기업 등급 산정 용도가 아닙니다.
+        </p>
+      </article>
+    </section>
+
+    <section id="demo" class="section-shell demo-section">
+      <div class="section-heading">
+        <p class="eyebrow">Interactive static demo</p>
+        <h2>회사 프로필을 고르면 리스크 패킷이 바로 생성됩니다</h2>
+        <p>
+          아래 입력값을 바꾸면 margin deterioration, market drawdown proxy, liquidity stress, health score가 즉시 다시 계산됩니다.
+        </p>
+      </div>
+
+      <div class="demo-grid">
+        <form class="control-panel" aria-label="Risk scoring controls">
+          <label class="field full">
+            <span>Sample company</span>
+            <select id="companySelect"></select>
+          </label>
+
+          <label class="field">
+            <span>Operating margin <output id="operatingMarginOut"></output></span>
+            <input id="operatingMargin" type="range" min="-0.08" max="0.28" step="0.005" />
+          </label>
+          <label class="field">
+            <span>Revenue growth QoQ <output id="revenueGrowthOut"></output></span>
+            <input id="revenueGrowth" type="range" min="-0.20" max="0.25" step="0.005" />
+          </label>
+          <label class="field">
+            <span>Debt ratio <output id="debtRatioOut"></output></span>
+            <input id="debtRatio" type="range" min="0.05" max="0.92" step="0.005" />
+          </label>
+          <label class="field">
+            <span>Current ratio <output id="currentRatioOut"></output></span>
+            <input id="currentRatio" type="range" min="0.50" max="3.50" step="0.05" />
+          </label>
+          <label class="field">
+            <span>Volatility 3M <output id="volatilityOut"></output></span>
+            <input id="volatility" type="range" min="0.05" max="0.75" step="0.005" />
+          </label>
+          <label class="field">
+            <span>Disclosure risk <output id="disclosureRiskOut"></output></span>
+            <input id="disclosureRisk" type="range" min="0" max="1" step="0.01" />
+          </label>
+          <label class="field checkbox-field full">
+            <input id="majorEvent" type="checkbox" />
+            <span>Major event flag</span>
+          </label>
+
+          <div class="control-actions full">
+            <button id="resetButton" class="button ghost dark" type="button">샘플값으로 리셋</button>
+            <button id="downloadButton" class="button primary" type="button">Decision packet 다운로드</button>
+          </div>
+        </form>
+
+        <section class="result-panel" aria-live="polite">
+          <div class="risk-summary">
+            <div>
+              <p class="eyebrow">Current result</p>
+              <h3 id="companyTitle">-</h3>
+              <p id="companyMeta" class="muted">-</p>
+            </div>
+            <div id="riskBadge" class="risk-badge">-</div>
+          </div>
+
+          <div class="score-hero">
+            <div class="gauge" role="img" aria-label="Overall risk gauge">
+              <div class="gauge-ring" id="gaugeRing"><span id="overallRisk">0%</span></div>
+            </div>
+            <div class="score-copy">
+              <h4 id="riskNarrative">Risk narrative</h4>
+              <p id="riskExplanation">입력값을 바탕으로 리스크 신호를 생성합니다.</p>
+            </div>
+          </div>
+
+          <div class="bars" id="scoreBars"></div>
+
+          <div class="insight-grid">
+            <article>
+              <h4>Top risk factors</h4>
+              <ul id="riskFactors"></ul>
+            </article>
+            <article>
+              <h4>Positive signals</h4>
+              <ul id="positiveFactors"></ul>
+            </article>
+          </div>
+
+          <details class="json-card">
+            <summary>Generated decision packet JSON</summary>
+            <pre id="decisionJson"></pre>
+            <button id="copyJsonButton" class="button ghost dark" type="button">JSON 복사</button>
+          </details>
+        </section>
+      </div>
+    </section>
+
+    <section id="architecture" class="section-shell visual-section">
+      <div class="section-heading">
+        <p class="eyebrow">Pipeline and architecture</p>
+        <h2>GitHub README에서 보이는 흐름을 사이트에서도 이어갑니다</h2>
+      </div>
+      <img class="wide-visual" src="assets/pipeline_flow.gif" alt="Animated pipeline flow" />
+      <img class="wide-visual" src="assets/architecture_diagram.png" alt="System architecture diagram" />
+    </section>
+
+    <section class="section-shell visual-section">
+      <div class="section-heading">
+        <p class="eyebrow">Portfolio dashboard</p>
+        <h2>로컬 파이프라인은 정적 대시보드 스냅샷도 생성합니다</h2>
+        <p>브라우저 데모는 즉석 simulator이고, 실제 Python 파이프라인은 아래와 같은 dashboard artifact를 만듭니다.</p>
+      </div>
+      <img class="wide-visual" src="assets/dashboard_preview.png" alt="Dashboard preview" />
+    </section>
+
+    <section id="api" class="section-shell api-section">
+      <div class="section-heading">
+        <p class="eyebrow">API surface</p>
+        <h2>정적 사이트 + FastAPI 백엔드 구조</h2>
+        <p>GitHub Pages는 프론트 체험용, FastAPI는 실제 파이프라인 실행용입니다.</p>
+      </div>
+      <div class="api-grid">
+        <article>
+          <h3>Static demo</h3>
+          <p>서버 없이 브라우저에서 계산합니다. 채용자나 리뷰어가 설치 없이 프로젝트 감을 볼 수 있습니다.</p>
+          <code>site/index.html</code>
+        </article>
+        <article>
+          <h3>Backend API</h3>
+          <p>실제 CSV 입력, feature engineering, model leaderboard, report artifact 생성은 FastAPI에서 처리합니다.</p>
+          <code>app/main.py</code>
+        </article>
+        <article>
+          <h3>Reviewer artifacts</h3>
+          <p>decision packet, monitoring report, dashboard snapshot, LLM prompt packet을 생성합니다.</p>
+          <code>artifacts/requests/*</code>
+        </article>
+      </div>
+      <pre class="code-block"><code>curl -X POST http://127.0.0.1:8000/v1/predictions \
+  -H "Content-Type: application/json" \
+  -d '{"company_id":"C003","input_dir":"data/input/sample"}'</code></pre>
+    </section>
+
+    <section id="run" class="section-shell run-section">
+      <div class="section-heading">
+        <p class="eyebrow">Run the full project</p>
+        <h2>로컬에서는 실제 Python/FastAPI 파이프라인을 실행합니다</h2>
+      </div>
+      <div class="terminal-grid">
+        <pre class="code-block"><code>python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python run_demo.py --company-id C003</code></pre>
+        <pre class="code-block"><code>uvicorn app.main:app --reload
+# Open API docs:
+# http://127.0.0.1:8000/docs</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built as a portfolio-grade ML engineering showcase. Synthetic example only; not financial advice.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+project:
+  name: quarterly-financial-risk-scoring-service
+  version: 0.2.0
+
+model:
+  random_state: 42
+  test_size_quarters: 4
+  default_model_type: random_forest
+
+data:
+  input_dir: data/input/sample
+  artifact_dir: artifacts

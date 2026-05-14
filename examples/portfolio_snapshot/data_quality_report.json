@@ -1,0 +1,59 @@
+{
+  "row_count": 760,
+  "company_count": 40,
+  "quarter_count": 19,
+  "feature_count": 44,
+  "date_range": {
+    "first_quarter": "2021Q1",
+    "last_quarter": "2025Q3"
+  },
+  "missing_rate_top10": [
+    {
+      "feature": "revenue",
+      "missing_rate": 0.0
+    },
+    {
+      "feature": "operating_income",
+      "missing_rate": 0.0
+    },
+    {
+      "feature": "net_income",
+      "missing_rate": 0.0
+    },
+    {
+      "feature": "total_assets",
+      "missing_rate": 0.0
+    },
+    {
+      "feature": "total_debt",
+      "missing_rate": 0.0
+    },
+    {
+      "feature": "total_equity",
+      "missing_rate": 0.0
+    },
+    {
+      "feature": "current_assets",
+      "missing_rate": 0.0
+    },
+    {
+      "feature": "current_liabilities",
+      "missing_rate": 0.0
+    },
+    {
+      "feature": "operating_cash_flow",
+      "missing_rate": 0.0
+    },
+    {
+      "feature": "interest_expense",
+      "missing_rate": 0.0
+    }
+  ],
+  "constant_features": [],
+  "quality_gates": {
+    "has_minimum_rows": true,
+    "has_multiple_companies": true,
+    "has_multiple_quarters": true,
+    "no_constant_feature_overflow": true
+  }
+}

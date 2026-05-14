@@ -1,0 +1,69 @@
+{
+  "request_id": "73ad0c33-34e2-4c7e-bda4-b78b919148ed",
+  "status": "completed",
+  "created_at": "2026-05-13T13:23:28+00:00",
+  "company_id": "C003",
+  "company_name": "SampleCompany_003",
+  "sector": "IT",
+  "quarter": "2025Q3",
+  "feature_available_at": "2025-11-14",
+  "scores": {
+    "margin_deterioration_risk": 0.3146,
+    "market_drawdown_proxy_risk": 0.2,
+    "liquidity_stress_risk": 0.027,
+    "financial_health_score": 0.8195
+  },
+  "risk_level": "low",
+  "top_risk_factors": [],
+  "positive_factors": [
+    "Healthy current ratio",
+    "Strong operating margin",
+    "Solid operating cash-flow margin",
+    "Positive revenue growth"
+  ],
+  "selected_models": {
+    "target_margin_deterioration": "random_forest",
+    "target_market_drawdown_proxy": "dummy_prior",
+    "target_liquidity_stress": "random_forest"
+  },
+  "model_created_at": "2026-05-13T13:23:18+00:00",
+  "report_path": "artifacts/requests/73ad0c33-34e2-4c7e-bda4-b78b919148ed/reports/C003_risk_report.md",
+  "llm_prompt_path": "artifacts/requests/73ad0c33-34e2-4c7e-bda4-b78b919148ed/llm_inputs/C003_llm_prompt.md",
+  "disclaimer": "Synthetic/sample or user-supplied data output. Not investment, lending, credit, trading, or corporate-rating advice. Human review is required.",
+  "decision_packet_path": "artifacts/requests/73ad0c33-34e2-4c7e-bda4-b78b919148ed/decision_packets/73ad0c33-34e2-4c7e-bda4-b78b919148ed.json",
+  "metrics_path": "artifacts/requests/73ad0c33-34e2-4c7e-bda4-b78b919148ed/metrics/time_split_metrics.json",
+  "walk_forward_metrics_path": "artifacts/requests/73ad0c33-34e2-4c7e-bda4-b78b919148ed/metrics/walk_forward_metrics.json",
+  "data_summary_path": "artifacts/requests/73ad0c33-34e2-4c7e-bda4-b78b919148ed/data_summary.json",
+  "metrics_preview": {
+    "target_margin_deterioration": {
+      "selected_model": "random_forest",
+      "selected_metric": {
+        "positive_rate": 0.08125,
+        "f1_at_0_5": 0.2,
+        "brier": 0.13704716102514336,
+        "roc_auc": 0.7362637362637363,
+        "average_precision": 0.186870010380108
+      }
+    },
+    "target_market_drawdown_proxy": {
+      "selected_model": "dummy_prior",
+      "selected_metric": {
+        "positive_rate": 0.19375,
+        "f1_at_0_5": 0.0,
+        "brier": 0.15625000000000006,
+        "roc_auc": 0.5,
+        "average_precision": 0.19375
+      }
+    },
+    "target_liquidity_stress": {
+      "selected_model": "random_forest",
+      "selected_metric": {
+        "positive_rate": 0.08125,
+        "f1_at_0_5": 0.2,
+        "brier": 0.07688054327136007,
+        "roc_auc": 0.8246991104133962,
+        "average_precision": 0.3017046180171729
+      }
+    }
+  }
+}

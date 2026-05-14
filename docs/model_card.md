@@ -1,40 +1,49 @@
-# Model card
+# Model Card
 
-## Model family
+## Model type
 
-RandomForest baseline models for tabular financial data.
+Baseline tabular classifiers for quarterly financial risk signals. The training utility compares:
 
-## Prediction targets
+- Dummy prior baseline
+- Logistic regression
+- Random forest
 
-- Next-quarter growth signal
-- Next-quarter risk signal
-- Next-quarter financial health score
+For each target, the selected model is the baseline with the strongest available validation score, prioritizing ROC-AUC when possible.
+
+## Targets
+
+- `target_margin_deterioration`
+- `target_market_drawdown_proxy`
+- `target_liquidity_stress`
+
+Targets are built from next-quarter values and are used only as labels.
+
+## Validation
+
+- Chronological train/test split
+- Walk-forward evaluation utility
+- Baseline leaderboard
+- Data quality report
+- Simple latest-quarter drift report
+
+## Explainability
+
+The project includes lightweight global feature importance and a model-used explanation packet for portfolio review. It uses sklearn feature importances or absolute linear coefficients depending on the selected model.
+
+This is not SHAP, not causal inference, and not a guarantee that a feature caused a risk outcome.
 
 ## Intended use
 
-- Portfolio demonstration
-- Pipeline validation
-- Analyst support prototype
-- Backend integration prototype
+Portfolio demonstration of ML engineering and service design.
 
-## Not intended for
+## Out-of-scope use
 
-- Investment advice
-- Credit approval
-- Automated lending decisions
-- Real company rating without verified data and compliance review
+- Investment recommendation
+- Lending decision
+- Credit screening
+- Trading signal
+- Corporate rating
 
-## Data used in this repository
+## Limitations
 
-The public sample data is artificial. It is included to test schema validation, training, prediction, and report output.
-
-## Evaluation status
-
-The repository includes a time-split evaluation script and example metric output. Real-world evaluation requires verified historical data and chronological holdout testing.
-
-## Known limits
-
-- Sample data does not represent real market behavior.
-- RandomForest is a baseline, not the final modeling ceiling.
-- Small datasets can produce unstable metrics.
-- Real deployment requires monitoring, audit logs, model versioning, and human review.
+The included sample data is synthetic. Therefore, validation metrics demonstrate execution flow and evaluation structure, not real financial forecasting accuracy.

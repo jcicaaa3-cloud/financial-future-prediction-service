@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.DS_Store
+
+# Runtime/generated outputs
+artifacts/*
+!artifacts/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# Local real data should not be committed
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+*.joblib
+*.pkl

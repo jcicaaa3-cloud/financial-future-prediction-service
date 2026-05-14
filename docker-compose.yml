@@ -1,0 +1,9 @@
+services:
+  risk-scoring-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app/src
+    volumes:
+      - ./artifacts:/app/artifacts

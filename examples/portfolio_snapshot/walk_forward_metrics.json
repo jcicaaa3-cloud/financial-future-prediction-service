@@ -1,0 +1,209 @@
+{
+  "created_at": "2026-05-14T01:13:16+00:00",
+  "fold_count": 7,
+  "folds": [
+    {
+      "test_quarter_index": 8097,
+      "test_quarter": "2024Q1",
+      "train_rows": 480,
+      "test_rows": 40,
+      "targets": {
+        "target_margin_deterioration": {
+          "positive_rate": 0.05,
+          "f1_at_0_5": 0.2857142857142857,
+          "brier": 0.18447514111904137,
+          "roc_auc": 0.9078947368421053,
+          "average_precision": 0.30952380952380953
+        },
+        "target_market_drawdown_proxy": {
+          "positive_rate": 0.2,
+          "f1_at_0_5": 0.21052631578947367,
+          "brier": 0.22565213363994507,
+          "roc_auc": 0.51171875,
+          "average_precision": 0.3010523424433294
+        },
+        "target_liquidity_stress": {
+          "positive_rate": 0.075,
+          "f1_at_0_5": 0.16666666666666666,
+          "brier": 0.1866798788981822,
+          "roc_auc": 0.5540540540540541,
+          "average_precision": 0.14680159920039978
+        }
+      }
+    },
+    {
+      "test_quarter_index": 8098,
+      "test_quarter": "2024Q2",
+      "train_rows": 520,
+      "test_rows": 40,
+      "targets": {
+        "target_margin_deterioration": {
+          "positive_rate": 0.15,
+          "f1_at_0_5": 0.46153846153846156,
+          "brier": 0.1658925633528671,
+          "roc_auc": 0.6911764705882353,
+          "average_precision": 0.47728937728937726
+        },
+        "target_market_drawdown_proxy": {
+          "positive_rate": 0.175,
+          "f1_at_0_5": 0.47619047619047616,
+          "brier": 0.21458005710552178,
+          "roc_auc": 0.7792207792207791,
+          "average_precision": 0.6882291378089698
+        },
+        "target_liquidity_stress": {
+          "positive_rate": 0.05,
+          "f1_at_0_5": 0.4444444444444444,
+          "brier": 0.1359351431995448,
+          "roc_auc": 0.9210526315789473,
+          "average_precision": 0.325
+        }
+      }
+    },
+    {
+      "test_quarter_index": 8099,
+      "test_quarter": "2024Q3",
+      "train_rows": 560,
+      "test_rows": 40,
+      "targets": {
+        "target_margin_deterioration": {
+          "positive_rate": 0.075,
+          "f1_at_0_5": 0.26666666666666666,
+          "brier": 0.2197546900019846,
+          "roc_auc": 0.6306306306306306,
+          "average_precision": 0.2685185185185185
+        },
+        "target_market_drawdown_proxy": {
+          "positive_rate": 0.175,
+          "f1_at_0_5": 0.21052631578947367,
+          "brier": 0.22262779027595822,
+          "roc_auc": 0.5064935064935064,
+          "average_precision": 0.2417677113329287
+        },
+        "target_liquidity_stress": {
+          "positive_rate": 0.1,
+          "f1_at_0_5": 0.3333333333333333,
+          "brier": 0.14078194892158594,
+          "roc_auc": 0.5451388888888888,
+          "average_precision": 0.465034965034965
+        }
+      }
+    },
+    {
+      "test_quarter_index": 8100,
+      "test_quarter": "2024Q4",
+      "train_rows": 600,
+      "test_rows": 40,
+      "targets": {
+        "target_margin_deterioration": {
+          "positive_rate": 0.1,
+          "f1_at_0_5": 0.1,
+          "brier": 0.20850680656225276,
+          "roc_auc": 0.5138888888888888,
+          "average_precision": 0.1696557971014493
+        },
+        "target_market_drawdown_proxy": {
+          "positive_rate": 0.25,
+          "f1_at_0_5": 0.3157894736842105,
+          "brier": 0.19573683303500017,
+          "roc_auc": 0.6633333333333332,
+          "average_precision": 0.5251350611497669
+        },
+        "target_liquidity_stress": {
+          "positive_rate": 0.05,
+          "f1_at_0_5": 0.4,
+          "brier": 0.07628073959206749,
+          "roc_auc": 0.9078947368421053,
+          "average_precision": 0.6111111111111112
+        }
+      }
+    },
+    {
+      "test_quarter_index": 8101,
+      "test_quarter": "2025Q1",
+      "train_rows": 640,
+      "test_rows": 40,
+      "targets": {
+        "target_margin_deterioration": {
+          "positive_rate": 0.125,
+          "f1_at_0_5": 0.4,
+          "brier": 0.18451508215282617,
+          "roc_auc": 0.6799999999999999,
+          "average_precision": 0.41444444444444445
+        },
+        "target_market_drawdown_proxy": {
+          "positive_rate": 0.2,
+          "f1_at_0_5": 0.11764705882352941,
+          "brier": 0.2179004653189401,
+          "roc_auc": 0.462890625,
+          "average_precision": 0.23582865995427355
+        },
+        "target_liquidity_stress": {
+          "positive_rate": 0.125,
+          "f1_at_0_5": 0.6,
+          "brier": 0.08888244552692319,
+          "roc_auc": 0.9314285714285715,
+          "average_precision": 0.6935897435897436
+        }
+      }
+    },
+    {
+      "test_quarter_index": 8102,
+      "test_quarter": "2025Q2",
+      "train_rows": 680,
+      "test_rows": 40,
+      "targets": {
+        "target_margin_deterioration": {
+          "positive_rate": 0.05,
+          "f1_at_0_5": 0.2,
+          "brier": 0.17353288320964483,
+          "roc_auc": 0.6710526315789473,
+          "average_precision": 0.16666666666666666
+        },
+        "target_market_drawdown_proxy": {
+          "positive_rate": 0.1,
+          "f1_at_0_5": 0.0,
+          "brier": 0.23137934689529746,
+          "roc_auc": 0.25,
+          "average_precision": 0.08010725657784482
+        },
+        "target_liquidity_stress": {
+          "positive_rate": 0.05,
+          "f1_at_0_5": 0.2857142857142857,
+          "brier": 0.09686531531944934,
+          "roc_auc": 0.8421052631578948,
+          "average_precision": 0.2159090909090909
+        }
+      }
+    },
+    {
+      "test_quarter_index": 8103,
+      "test_quarter": "2025Q3",
+      "train_rows": 720,
+      "test_rows": 40,
+      "targets": {
+        "target_margin_deterioration": {
+          "positive_rate": 0.05,
+          "f1_at_0_5": 0.0,
+          "brier": 0.17304477940059787,
+          "roc_auc": 0.31578947368421056,
+          "average_precision": 0.05322128851540616
+        },
+        "target_market_drawdown_proxy": {
+          "positive_rate": 0.225,
+          "f1_at_0_5": 0.0,
+          "brier": 0.1902075512611791,
+          "roc_auc": 0.5931899641577061,
+          "average_precision": 0.2799571452512629
+        },
+        "target_liquidity_stress": {
+          "positive_rate": 0.1,
+          "f1_at_0_5": 0.36363636363636365,
+          "brier": 0.1382358636813469,
+          "roc_auc": 0.7638888888888888,
+          "average_precision": 0.2621732026143791
+        }
+      }
+    }
+  ]
+}

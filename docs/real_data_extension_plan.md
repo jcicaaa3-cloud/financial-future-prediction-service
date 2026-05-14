@@ -1,48 +1,23 @@
-# Real data extension plan
+# Real-data extension plan
 
 ## Goal
 
-Replace the artificial sample data with verified financial and market data while keeping the existing input contract.
+Move from synthetic sample execution to a limited, reproducible real-data portfolio version.
 
-## Data sources to connect
+## Suggested scope
 
-Financial statements:
+- 30 to 100 listed companies
+- 12 to 20 quarters
+- OpenDART-style financial statement ingestion
+- KRX or vendor-based market data ingestion
+- Public macro indicators
+- Disclosure-derived risk text summaries
 
-- DART or Open DART
-- Company quarterly reports
+## Engineering steps
 
-Market data:
-
-- KRX
-- Market data vendor API
-
-Macro data:
-
-- Interest rate
-- Exchange rate
-- Inflation
-- Business cycle index
-
-Disclosure data:
-
-- Company filings
-- Event flags
-- Disclosure risk score
-- Korean summary text
-
-## Steps
-
-1. Collect company list and sector metadata.
-2. Collect quarterly financial statement fields.
-3. Collect market indicators by company and quarter.
-4. Collect macro indicators by quarter.
-5. Create disclosure risk fields from filing text.
-6. Save files in the required CSV format.
-7. Run schema validation.
-8. Run chronological validation.
-9. Compare baseline and upgraded models.
-10. Save metrics and model cards for each version.
-
-## Data governance
-
-Real company data should be stored outside public GitHub. API keys and credentials should be managed through environment variables or a secure secret store.
+1. Implement `OpenDartClient.normalize_financial_statement` account mapping.
+2. Implement market data normalization in `KrxClient`.
+3. Store real input CSVs outside public GitHub.
+4. Commit only schema, adapter code, anonymized sample, and evaluation report.
+5. Add a `feature_available_at` audit for every feature group.
+6. Evaluate with chronological and walk-forward validation.

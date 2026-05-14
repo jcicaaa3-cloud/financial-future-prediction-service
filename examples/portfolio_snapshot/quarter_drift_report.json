@@ -1,0 +1,169 @@
+{
+  "latest_quarter": "2025Q3",
+  "reference_quarters": [
+    "2021Q1",
+    "2021Q2",
+    "2021Q3",
+    "2021Q4",
+    "2022Q1",
+    "2022Q2",
+    "2022Q3",
+    "2022Q4",
+    "2023Q1",
+    "2023Q2",
+    "2023Q3",
+    "2023Q4",
+    "2024Q1",
+    "2024Q2",
+    "2024Q3",
+    "2024Q4",
+    "2025Q1",
+    "2025Q2"
+  ],
+  "features": [
+    {
+      "feature": "fx_rate",
+      "latest_mean": 1323.9659,
+      "reference_mean": 1211.49255,
+      "standardized_delta": 1.808487,
+      "severity": "medium"
+    },
+    {
+      "feature": "macro_rate",
+      "latest_mean": 4.114,
+      "reference_mean": 3.013433,
+      "standardized_delta": 1.749657,
+      "severity": "medium"
+    },
+    {
+      "feature": "business_cycle_index",
+      "latest_mean": 103.658,
+      "reference_mean": 100.223094,
+      "standardized_delta": 1.340188,
+      "severity": "low"
+    },
+    {
+      "feature": "inflation",
+      "latest_mean": 2.4495,
+      "reference_mean": 2.229439,
+      "standardized_delta": 0.932122,
+      "severity": "low"
+    },
+    {
+      "feature": "operating_income",
+      "latest_mean": 41970.944,
+      "reference_mean": 30414.205264,
+      "standardized_delta": 0.508136,
+      "severity": "low"
+    },
+    {
+      "feature": "net_income",
+      "latest_mean": 30070.037,
+      "reference_mean": 21365.157819,
+      "standardized_delta": 0.507949,
+      "severity": "low"
+    },
+    {
+      "feature": "revenue",
+      "latest_mean": 368610.16925,
+      "reference_mean": 290935.813347,
+      "standardized_delta": 0.497502,
+      "severity": "low"
+    },
+    {
+      "feature": "current_liabilities",
+      "latest_mean": 129901.96125,
+      "reference_mean": 95471.454931,
+      "standardized_delta": 0.458972,
+      "severity": "low"
+    },
+    {
+      "feature": "market_cap",
+      "latest_mean": 733676.936,
+      "reference_mean": 529403.335597,
+      "standardized_delta": 0.45478,
+      "severity": "low"
+    },
+    {
+      "feature": "total_assets",
+      "latest_mean": 754446.798,
+      "reference_mean": 603901.873583,
+      "standardized_delta": 0.411001,
+      "severity": "low"
+    },
+    {
+      "feature": "total_debt",
+      "latest_mean": 338315.8395,
+      "reference_mean": 265282.352583,
+      "standardized_delta": 0.387208,
+      "severity": "low"
+    },
+    {
+      "feature": "interest_expense",
+      "latest_mean": 3597.2475,
+      "reference_mean": 2729.583722,
+      "standardized_delta": 0.371755,
+      "severity": "low"
+    },
+    {
+      "feature": "operating_cash_flow",
+      "latest_mean": 35773.57275,
+      "reference_mean": 27271.274347,
+      "standardized_delta": 0.360501,
+      "severity": "low"
+    },
+    {
+      "feature": "current_assets",
+      "latest_mean": 330316.668,
+      "reference_mean": 267632.996264,
+      "standardized_delta": 0.345215,
+      "severity": "low"
+    },
+    {
+      "feature": "total_equity",
+      "latest_mean": 416130.9585,
+      "reference_mean": 338619.521389,
+      "standardized_delta": 0.300504,
+      "severity": "low"
+    },
+    {
+      "feature": "operating_margin_change_qoq",
+      "latest_mean": 0.006843,
+      "reference_mean": 0.000297,
+      "standardized_delta": 0.234584,
+      "severity": "low"
+    },
+    {
+      "feature": "net_margin",
+      "latest_mean": 0.086146,
+      "reference_mean": 0.07581,
+      "standardized_delta": 0.223827,
+      "severity": "low"
+    },
+    {
+      "feature": "volatility_3m_roll4_std",
+      "latest_mean": 0.034843,
+      "reference_mean": 0.031963,
+      "standardized_delta": 0.198348,
+      "severity": "low"
+    },
+    {
+      "feature": "operating_margin",
+      "latest_mean": 0.12169,
+      "reference_mean": 0.10976,
+      "standardized_delta": 0.196617,
+      "severity": "low"
+    },
+    {
+      "feature": "volatility_3m",
+      "latest_mean": 0.276799,
+      "reference_mean": 0.265239,
+      "standardized_delta": 0.19306,
+      "severity": "low"
+    }
+  ],
+  "quality_gate": {
+    "max_abs_standardized_delta": 1.808487,
+    "severe_feature_count": 0
+  }
+}

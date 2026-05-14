@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests
+        run: pytest -q
+      - name: Run demo pipeline
+        run: python run_demo.py --company-id C003
+      - name: Build portfolio snapshot
+        run: python scripts/build_portfolio_snapshot.py --company-id C003
+      - name: Run data drift smoke check
+        run: python scripts/check_data_drift.py --input-dir data/input/sample

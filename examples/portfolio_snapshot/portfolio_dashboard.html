@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Financial Risk Scoring Portfolio Dashboard</title>
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --panel: #ffffff;
+      --soft: #f8fafc;
+      --blue: #2563eb;
+      --green: #16a34a;
+      --purple: #7c3aed;
+      --orange: #d97706;
+      --pink: #db2777;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%); color: var(--ink); }
+    header { position: relative; overflow: hidden; color: white; padding: 42px 48px 34px; background: radial-gradient(circle at 85% 10%, rgba(99,102,241,0.55), transparent 32%), linear-gradient(135deg, #0f172a 0%, #172554 62%, #0e7490 100%); }
+    header::after { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px); background-size: 72px 72px; opacity: .42; }
+    header > * { position: relative; z-index: 1; }
+    main { padding: 28px 40px 46px; max-width: 1220px; margin: auto; }
+    h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.02; margin: 10px 0 10px; letter-spacing: -0.04em; }
+    h2 { margin: 0 0 12px; font-size: 22px; }
+    h3 { margin: 24px 0 8px; font-size: 17px; color: #334155; }
+    .eyebrow { color: #cbd5e1; text-transform: uppercase; letter-spacing: .14em; font-size: 13px; font-weight: 800; }
+    .subhead { color: #dbeafe; max-width: 880px; font-size: 18px; }
+    .risk-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 9px 14px; border-radius: 999px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.22); }
+    .risk-badge.low { color: #bbf7d0; }
+    .risk-badge.medium { color: #fde68a; }
+    .risk-badge.high { color: #fecaca; }
+    .flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 28px; max-width: 1080px; }
+    .flow span { position: relative; padding: 11px 10px; border-radius: 14px; background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.18); text-align: center; font-weight: 800; font-size: 13px; }
+    .flow span:not(:last-child)::after { content: "→"; position: absolute; right: -15px; top: 50%; transform: translateY(-50%); color: #7dd3fc; font-size: 22px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+    .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+    .card, .metric-card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 20px; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06); }
+    .metric-label { color: var(--muted); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
+    .metric-value { font-size: 42px; font-weight: 900; letter-spacing: -0.04em; margin: 8px 0 12px; }
+    .meter { height: 10px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
+    .meter span { display: block; height: 100%; background: linear-gradient(90deg, var(--blue), var(--purple)); border-radius: 999px; }
+    .muted { color: var(--muted); font-size: 14px; }
+    .big-number { font-weight: 700; color: #334155; }
+    .pill { display: inline-block; padding: 5px 9px; border-radius: 999px; background: #eff6ff; color: #1d4ed8; font-weight: 800; font-size: 12px; }
+    .status { display: inline-block; padding: 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 800; text-transform: uppercase; }
+    .status.pass, .status.low { background: #dcfce7; color: #166534; }
+    .status.medium, .status.check { background: #fef3c7; color: #92400e; }
+    .status.high { background: #fee2e2; color: #991b1b; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 11px 10px; text-align: left; vertical-align: top; }
+    th { color: #334155; background: #f8fafc; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+    section { margin: 18px 0; }
+    code { background: #f1f5f9; padding: 3px 5px; border-radius: 5px; }
+    ul { padding-left: 22px; }
+    li { margin: 7px 0; }
+    .mini-section + .mini-section { margin-top: 22px; }
+    .footer-note { border-left: 4px solid var(--blue); }
+    @media (max-width: 760px) {
+      header { padding: 30px 22px; }
+      main { padding: 20px 16px 36px; }
+      .flow { grid-template-columns: 1fr 1fr; }
+      .flow span:not(:last-child)::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Portfolio artifact · static HTML · generated by pipeline</div>
+  <h1>Quarterly Financial Risk Scoring Dashboard</h1>
+  <p class="subhead">SampleCompany_003 (C003) · IT · 2025Q3</p>
+  <span class="risk-badge low">Risk level: low</span>
+  <div class="flow">
+    <span>CSV contract</span><span>Feature pipeline</span><span>Validation</span><span>FastAPI</span><span>Monitoring</span><span>LLM packet</span>
+  </div>
+</header>
+<main>
+  <section class="grid">
+            <div class="metric-card">
+              <div class="metric-label">Margin Deterioration Risk</div>
+              <div class="metric-value">0.362</div>
+              <div class="meter"><span style="width:36%"></span></div>
+            </div>
+            
+
+            <div class="metric-card">
+              <div class="metric-label">Market Drawdown Proxy Risk</div>
+              <div class="metric-value">0.200</div>
+              <div class="meter"><span style="width:20%"></span></div>
+            </div>
+            
+
+            <div class="metric-card">
+              <div class="metric-label">Liquidity Stress Risk</div>
+              <div class="metric-value">0.000</div>
+              <div class="meter"><span style="width:0%"></span></div>
+            </div>
+            
+
+            <div class="metric-card">
+              <div class="metric-label">Financial Health Score</div>
+              <div class="metric-value">0.813</div>
+              <div class="meter"><span style="width:81%"></span></div>
+            </div>
+            </section>
+
+  <section class="two-col">
+    <div class="card"><h2>Risk factors</h2><ul><li>No signal generated</li></ul></div>
+    <div class="card"><h2>Positive factors</h2><ul><li>Healthy current ratio</li>
+<li>Strong operating margin</li>
+<li>Solid operating cash-flow margin</li>
+<li>Positive revenue growth</li></ul></div>
+  </section>
+
+  <section class="card">
+    <h2>Feature snapshot</h2>
+    <p class="muted">Latest company-quarter values used by the service packet.</p>
+    <table><thead><tr><th>Feature</th><th>Current value</th></tr></thead><tbody><tr><td>operating_margin</td><td>0.150828</td></tr>
+<tr><td>net_margin</td><td>0.086896</td></tr>
+<tr><td>current_ratio</td><td>5.534034</td></tr>
+<tr><td>debt_ratio</td><td>0.46634</td></tr>
+<tr><td>interest_coverage</td><td>18.133627</td></tr>
+<tr><td>ocf_margin</td><td>0.150374</td></tr>
+<tr><td>revenue_growth_qoq</td><td>0.074277</td></tr>
+<tr><td>stock_return_3m</td><td>0.02297</td></tr>
+<tr><td>volatility_3m</td><td>0.27428</td></tr>
+<tr><td>disclosure_risk_score</td><td>0.23154</td></tr>
+<tr><td>major_event_flag</td><td>0.0</td></tr>
+<tr><td>macro_rate</td><td>4.114</td></tr></tbody></table>
+  </section>
+
+  <section class="card">
+    <h2>Validation leaderboard</h2>
+    <p class="muted">Chronological split; baseline model comparison. Synthetic sample metrics are engineering evidence only.</p>
+    
+    <table>
+      <thead><tr><th>Target</th><th>Selected model</th><th>ROC-AUC</th><th>PR-AUC</th><th>F1@0.5</th></tr></thead>
+      <tbody><tr><td>target_margin_deterioration</td><td><span class='pill'>random_forest</span></td><td>0.774</td><td>0.385</td><td>0.290</td></tr>
+<tr><td>target_market_drawdown_proxy</td><td><span class='pill'>dummy_prior</span></td><td>0.500</td><td>0.194</td><td>0.000</td></tr>
+<tr><td>target_liquidity_stress</td><td><span class='pill'>random_forest</span></td><td>0.806</td><td>0.224</td><td>0.276</td></tr></tbody>
+    </table>
+    
+  </section>
+
+  <section class="card">
+    <h2>Model-used feature importance</h2>
+    <p class="muted">Global baseline importance. This is not causal evidence.</p>
+    
+            <div class="mini-section">
+              <h3>target_margin_deterioration</h3>
+              <table>
+                <thead><tr><th>Feature</th><th>Importance</th><th>Hint</th></tr></thead>
+                <tbody><tr><td>operating_margin_change_qoq</td><td>0.212815</td><td>lower values usually increase profitability risk</td></tr><tr><td>operating_margin</td><td>0.056073</td><td>lower values usually increase profitability risk</td></tr><tr><td>operating_income</td><td>0.051732</td><td>model-used feature; inspect with domain context</td></tr><tr><td>net_income</td><td>0.04864</td><td>model-used feature; inspect with domain context</td></tr><tr><td>ocf_margin</td><td>0.046521</td><td>lower values usually increase cash-flow risk</td></tr><tr><td>disclosure_risk_lag1</td><td>0.045879</td><td>model-used feature; inspect with domain context</td></tr><tr><td>market_cap</td><td>0.039988</td><td>model-used feature; inspect with domain context</td></tr><tr><td>net_margin</td><td>0.03932</td><td>lower values usually increase profitability risk</td></tr></tbody>
+              </table>
+            </div>
+            
+
+            <div class="mini-section">
+              <h3>target_market_drawdown_proxy</h3>
+              <table>
+                <thead><tr><th>Feature</th><th>Importance</th><th>Hint</th></tr></thead>
+                <tbody><tr><td colspan='3'>Selected model does not expose simple feature importance.</td></tr></tbody>
+              </table>
+            </div>
+            
+
+            <div class="mini-section">
+              <h3>target_liquidity_stress</h3>
+              <table>
+                <thead><tr><th>Feature</th><th>Importance</th><th>Hint</th></tr></thead>
+                <tbody><tr><td>debt_to_equity</td><td>0.116977</td><td>higher values usually increase leverage risk</td></tr><tr><td>operating_income</td><td>0.088397</td><td>model-used feature; inspect with domain context</td></tr><tr><td>operating_margin_roll4_mean</td><td>0.069188</td><td>lower values usually increase profitability risk</td></tr><tr><td>ocf_margin</td><td>0.061388</td><td>lower values usually increase cash-flow risk</td></tr><tr><td>interest_coverage</td><td>0.059747</td><td>lower values usually increase liquidity and debt-service risk</td></tr><tr><td>net_margin</td><td>0.057257</td><td>lower values usually increase profitability risk</td></tr><tr><td>stock_return_3m_roll4_mean</td><td>0.044669</td><td>model-used feature; inspect with domain context</td></tr><tr><td>volatility_3m_lag1</td><td>0.042101</td><td>higher values usually increase market risk</td></tr></tbody>
+              </table>
+            </div>
+            
+  </section>
+
+  <section class="two-col">
+    <div class="card"><h2>Data quality gates</h2>
+    <p class="muted big-number">760 rows · 40 companies · 19 quarters · 44 features</p>
+    <table><thead><tr><th>Gate</th><th>Status</th></tr></thead><tbody><tr><td>has_minimum_rows</td><td><span class='status pass'>PASS</span></td></tr>
+<tr><td>has_multiple_companies</td><td><span class='status pass'>PASS</span></td></tr>
+<tr><td>has_multiple_quarters</td><td><span class='status pass'>PASS</span></td></tr>
+<tr><td>no_constant_feature_overflow</td><td><span class='status pass'>PASS</span></td></tr></tbody></table>
+    </div>
+    <div class="card"><h2>Quarter drift smoke check</h2>
+    <p class="muted">Latest quarter compared with earlier quarters: <strong>2025Q3</strong></p>
+    <table><thead><tr><th>Feature</th><th>Std. delta</th><th>Severity</th></tr></thead><tbody><tr><td>fx_rate</td><td>1.808487</td><td><span class='status medium'>medium</span></td></tr><tr><td>macro_rate</td><td>1.749657</td><td><span class='status medium'>medium</span></td></tr><tr><td>business_cycle_index</td><td>1.340188</td><td><span class='status low'>low</span></td></tr><tr><td>inflation</td><td>0.932122</td><td><span class='status low'>low</span></td></tr><tr><td>operating_income</td><td>0.508136</td><td><span class='status low'>low</span></td></tr><tr><td>net_income</td><td>0.507949</td><td><span class='status low'>low</span></td></tr><tr><td>revenue</td><td>0.497502</td><td><span class='status low'>low</span></td></tr><tr><td>current_liabilities</td><td>0.458972</td><td><span class='status low'>low</span></td></tr></tbody></table>
+    </div>
+  </section>
+
+  <section class="card footer-note">
+    <h2>Why this exists</h2>
+    <p>This artifact is meant to show ML engineering, API design, validation hygiene, monitoring awareness, and portfolio storytelling. It is not investment, lending, credit, trading, or corporate-rating advice.</p>
+    <p class="muted">Request ID: <code>portfolio-snapshot</code></p>
+  </section>
+</main>
+</body>
+</html>

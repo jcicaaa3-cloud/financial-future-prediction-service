@@ -1,45 +1,46 @@
-# Evaluation protocol
+# Evaluation Protocol
 
-## Evaluation goal
+## Goal
 
-The evaluation checks whether the model can predict next-quarter signals from past and current-quarter information.
+Show evaluation hygiene for a financial ML service portfolio project. The goal is not to claim real market performance from synthetic data.
 
-## Recommended split
+## Splits
 
-Use chronological validation. Training data should come from earlier quarters and validation data from later quarters.
+The project avoids random-only evaluation. It uses:
 
-Example:
+- chronological train/test split
+- walk-forward evaluation
 
-- Train: 2020Q1 to 2023Q4
-- Validation: 2024Q1 to 2024Q4
+## Leakage guard
+
+Feature columns are checked for obvious future-label tokens:
+
+- `next_`
+- `future_`
+- `target_`
+
+Target columns are produced from next-quarter values, but those next-quarter values are not allowed into the model feature list.
+
+## Baselines
+
+The training pipeline compares:
+
+- dummy prior baseline
+- logistic regression
+- random forest
+
+The leaderboard is exposed both as JSON artifact and API endpoint.
 
 ## Metrics
 
-Growth model:
+Per target:
 
-- Accuracy
-- F1 score
-- ROC AUC
+- ROC-AUC
+- average precision
+- F1 at 0.5
+- Brier score
+- positive rate
 
-Risk model:
+## Portfolio caveat
 
-- Accuracy
-- F1 score
-- ROC AUC
-
-Health model:
-
-- MAE
-- RMSE
-
-## Required checks
-
-- Confirm that future labels are not leaked into input features.
-- Confirm that the same company-quarter row does not appear in both train and validation sets.
-- Compare random split results with chronological split results.
-- Report sector-level performance when enough data is available.
-- Save metrics in outputs/evaluation.
-
-## Current package status
-
-The included metrics come from artificial sample data. They confirm execution flow and metric generation. They do not support claims about real financial forecasting accuracy.
+Because bundled data is synthetic, these metrics are not evidence of real financial forecasting performance. They are evidence that the project has a reproducible validation and artifact flow.
